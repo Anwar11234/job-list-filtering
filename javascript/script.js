@@ -19,6 +19,7 @@ function filterJobs(filter){
         const tags = job.getAttribute('data-tags').split(',');
         return checkTags(tags) && tags.includes(filter);
     })
+    console.log(matches , currentTags)
     matches.forEach(match => match.style.display = 'initial');
 }
 
@@ -33,15 +34,17 @@ function checkTags(tags){
 }
 
 function addTags(tagName){ 
+    if(currentTags.has(tagName)) return;
     const html = `  <div class="result">
                         <span class="filter">${tagName}</span>
                         <button class="close">
                             <img src="images/icon-remove.svg" alt="remove ">
                         </button> 
                     </div>`;
-
+    
     filters.innerHTML += html;           
     currentTags.add(tagName);     
+    console.log(currentTags);
 }
 
 function closeTag(event){ 
