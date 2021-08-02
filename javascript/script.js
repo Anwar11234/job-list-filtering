@@ -1,5 +1,7 @@
 const jobs = [...document.querySelectorAll('[data-job]')];
 const main = document.querySelector('main');
+const clearBtn = document.querySelector('.clear');
+const results = document.querySelector('.results');
 
 const filters = document.querySelector('.filters');
 const currentTags = new Set();
@@ -42,7 +44,7 @@ function addTags(tagName){
                         </button> 
                     </div>`;
     
-    filters.innerHTML += html;           
+    results.innerHTML += html;         
     currentTags.add(tagName);     
     console.log(currentTags);
 }
@@ -68,7 +70,8 @@ function removeTag(tag){
 }
 
 function removeTagsContainer(){ 
-    filters.classList.remove('visible')
+    results.innerHTML = '';
+    filters.classList.remove('visible');
     jobs.forEach(job => job.style.display = 'initial');
 }
 
@@ -76,5 +79,12 @@ function clearList(){
     jobs.forEach(job => job.style.display = 'none');
 }
 
+function clearFilters(){ 
+    currentTags.clear();
+    removeTagsContainer();
+    console.log(currentTags)
+}
+
 main.addEventListener('click' , showFilters);
 filters.addEventListener('click' , closeTag);
+clearBtn.addEventListener('click' , clearFilters);

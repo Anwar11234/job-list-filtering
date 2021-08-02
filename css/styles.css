@@ -45,23 +45,43 @@ header{
 .filters{ 
     background-color: white;
     border-radius: 10px;
-    flex: 0.6;
+    width: 90%;
+    max-width: 70rem;
     margin: 0 auto;
     transform: translateY(50%);
     display: flex;
+    gap: 0.75rem;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem;
     padding: 1rem;
     display: none;
+    position: relative;
+}
+
+.filters .clear{ 
+   color: var(--cyan-400);
+   font-weight: 500;
+   font-size: 1rem;
+   justify-self: flex-end;
+}
+
+.filters .clear:hover{ 
+    text-decoration: underline;
 }
 
 .filters.visible{ 
     display: flex;
 }
 
-.filters .result{ 
+.filters .result , .filters .results{ 
     display: flex;
     align-items: center;
+}
+
+.filters .results{ 
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .filter{ 
@@ -73,7 +93,6 @@ header{
     border-radius: 5px 0 0 5px;
 }
 
-
 .close{ 
     background-color: var(--cyan-400);
     padding: 0.7rem;
@@ -82,7 +101,13 @@ header{
 }
 
 main{ 
-    margin: 3rem 0;
+    margin: 7rem 0;
+}
+
+@media(max-width: 420px){ 
+    main{ 
+        padding-top: 1rem;
+    }
 }
 
 .container{ 
@@ -189,6 +214,7 @@ main{
     background-color: var(--cyan-100);
     color: var(--cyan-400);
     transition: 250ms ease-in-out;
+    font-size: 1.05rem;
 }
 
 .requirement:hover{ 
@@ -207,6 +233,10 @@ main{
     }
     main{ 
         margin: 6rem 0;
+    }
+
+    .filters .clear{ 
+        font-size: 1.35rem;
     }
 
     .container,.company{ 
